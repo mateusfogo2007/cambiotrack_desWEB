@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CâmbioTrack</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topo">
+    <h1>Câmbio<span>Track</span></h1>
+    <p>Painel financeiro e conversor de ativos</p>
+  </header>
+
+  <main>
+    <!-- Cotações em tempo real (AwesomeAPI) -->
+    <section class="painel" aria-labelledby="t-cotacoes">
+      <div class="painel-topo">
+        <h2 id="t-cotacoes">Cotações em tempo real</h2>
+        <button type="button" id="btn-atualizar">Atualizar</button>
+      </div>
+      <p id="status-api" class="aviso" role="status"></p>
+      <div id="cotacoes" class="grade-cotacoes"></div>
+    </section>
+
+    <!-- Formulário de conversão -->
+    <section class="painel" aria-labelledby="t-conversao">
+      <h2 id="t-conversao">Simular conversão</h2>
+      <form id="form-conversao" class="form">
+        <div class="campo">
+          <label for="montante">Montante</label>
+          <input type="number" id="montante" placeholder="Ex.: 100" min="0.01" step="0.01" required>
+        </div>
+        <div class="campo">
+          <label for="origem">De</label>
+          <select id="origem" required>
+            <option value="BRL">BRL - Real</option>
+            <option value="USD" selected>USD - Dólar</option>
+            <option value="EUR">EUR - Euro</option>
+            <option value="BTC">BTC - Bitcoin</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="destino">Para</label>
+          <select id="destino" required>
+            <option value="BRL" selected>BRL - Real</option>
+            <option value="USD">USD - Dólar</option>
+            <option value="EUR">EUR - Euro</option>
+            <option value="BTC">BTC - Bitcoin</option>
+          </select>
+        </div>
+        <button type="submit">Simular ordem</button>
+      </form>
+      <p id="msg-form" class="aviso" role="status"></p>
+    </section>
+
+    <!-- Indicadores consolidados -->
+    <section class="painel" aria-labelledby="t-indicadores">
+      <h2 id="t-indicadores">Indicadores</h2>
+      <div class="grade-indicadores">
+        <article class="indicador"><span>Total movimentado</span><strong id="ind-total">R$ 0,00</strong></article>
+        <article class="indicador"><span>Ordens ativas</span><strong id="ind-ativas">0</strong></article>
+        <article class="indicador"><span>Ordens canceladas</span><strong id="ind-canceladas">0</strong></article>
+      </div>
+    </section>
+
+    <!-- Lista de transações -->
+    <section class="painel" aria-labelledby="t-transacoes">
+      <h2 id="t-transacoes">Transações simuladas</h2>
+      <p id="vazio" class="aviso">Nenhuma transação ainda.</p>
+      <div id="lista" class="lista"></div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p>CâmbioTrack &middot; Projeto 01 &middot; Desenvolvimento Web &middot; CEUB</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
